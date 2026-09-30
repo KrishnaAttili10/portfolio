@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Krishna Attili — Software Engineer</title>
+<style>
+:root{--ink:#111827;--muted:#5b6472;--line:#e5e7eb;--bg:#f7f8fb;--card:#fff;--accent:#4f46e5}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:980px;margin:auto;padding:24px 18px 64px}
+.hero{padding:46px 8px 30px}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:var(--accent)}
+h1{font-size:clamp(38px,7vw,68px);line-height:.98;margin:12px 0}.hero p{font-size:20px;line-height:1.5;max-width:780px;color:var(--muted)}
+.contact{font-size:14px;color:var(--muted);margin-top:14px}.contact a{color:inherit}
+.links a{display:inline-block;margin:8px 8px 0 0;padding:11px 16px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);background:white;font-weight:650}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:25px;box-shadow:0 8px 30px rgba(17,24,39,.045)}
+.full{grid-column:1/-1} h2{font-size:22px;margin:0 0 15px}.label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}
+.award{border:2px solid #111827;padding:26px;border-radius:18px}.award .big{font-size:30px;font-weight:850;line-height:1.1;margin:8px 0 10px}.award p{color:var(--muted);line-height:1.55}
+.item{padding:16px 0;border-top:1px solid var(--line)}.item:first-child{border-top:0;padding-top:0}.item h3{margin:0 0 6px;font-size:18px}.item p{margin:0;color:var(--muted);line-height:1.55}
+.tags{display:flex;flex-wrap:wrap;gap:8px}.tag{padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:#fafafa;font-size:14px;font-weight:650}
+.award-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:center}.award-preview{display:block;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#f8fbff}.award-preview img{display:block;width:100%;height:auto}.cta{text-align:center;padding:35px 20px}.cta h2{font-size:28px}.cta p{color:var(--muted)}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.hero{padding-top:25px}.award-layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section class="hero">
+<div class="eyebrow">Software Engineer · Systems · Backend · Infrastructure · Full-Stack</div>
+<h1>Krishna Attili</h1>
+<p><strong>M.S. Computer Science @ NC State</strong> · Software engineer with 2+ years of experience building production software across backend services, distributed systems, platform infrastructure, data pipelines, and full-stack applications at Blue Yonder. I enjoy solving systems problems across the stack — from networking and operating-systems fundamentals to scalable services, infrastructure, and intelligent software.</p>
+<div class="contact">
+<a href="tel:+16693664685">669-366-4685</a> ·
+<a href="mailto:kkattili@ncsu.edu">kkattili@ncsu.edu</a> ·
+<a href="mailto:attilikrishnakireeti@ncsu.edu">attilikrishnakireeti@ncsu.edu</a>
+</div>
+<div class="links">
+<a href="https://www.linkedin.com/in/krishna-attili-838490272" target="_blank">LinkedIn ↗</a>
+</div>
+</section>
+
+<div class="grid">
+
+<section class="card full">
+<div class="label">Experience</div>
+<h2>Blue Yonder · Software Engineer / Associate Software Engineer</h2>
+<p style="color:var(--muted);line-height:1.6;margin-top:-6px">Jul 2024 – Aug 2026 · Bengaluru, India</p>
+<div class="item"><h3>RCA & warehouse operations</h3><p style="margin-bottom:10px"><strong>RCA (Root Cause Analysis)</strong> helps warehouse teams investigate operational problems such as late shipments, short orders, and order lead-time issues by surfacing likely underlying causes from warehouse data.</p><p>Owned the RCA sub-agent end-to-end within an enterprise warehouse-operations platform, integrating Python, FastAPI, Snowflake, Kafka, MongoDB, Azure, Azure Blob Storage, and LangChain.</p></div>
+<div class="item"><h3>Distributed processing</h3><p>Designed the pipeline supporting 40+ scheduled jobs running every 30–60 minutes, with Kafka producers and consumers coordinating Snowflake queries, RCA computation, and persisted results for low-latency retrieval.</p></div>
+<div class="item"><h3>Performance & data infrastructure</h3><p>Parallelized RCA and AI brief-generation workloads with Python multithreading, reducing scheduled-job execution time by more than 50%. Migrated precomputed RCA results from Azure Blob Storage to MongoDB to improve retrieval performance.</p></div>
+<div class="item"><h3>Platform engineering</h3><p>Built internal APIs and automated Kafka topic provisioning for enterprise platform services, along with Kafka-based test infrastructure for consuming and validating application lifecycle and status events.</p></div>
+<div class="item"><h3>Full-stack & developer tooling</h3><p>Developed React/TypeScript workflow-editor functionality including control connectors, parallel branches, nested actions, and reusable components. Built a configurable slot-based UI extension system used to inject custom UI components through configuration.</p></div>
+<div class="item"><h3>Product impact</h3><p>Contributed to product integration and customer-facing demonstrations, helping turn RCA workflows into a practical warehouse-operations capability.</p></div>
+
+<div class="item"><h2 style="margin:0 0 6px">Blue Yonder · Software Engineering Intern</h2><p style="margin-bottom:10px">Jan 2024 – Jun 2024 · Bengaluru, India</p><p>Built Spring Boot microservices and Java APIs, contributed to React/Node.js applications, and worked across testing, CI/CD, and warehouse-management-system product development.</p></div>
+
+<div class="item"><h2 style="margin:0 0 6px">Saartha Pvt Ltd · Software Engineering Intern</h2><p style="margin-bottom:10px">Jun 2023 – Aug 2023</p><p>Worked on field-service-management software, building geospatial integrations and mapping utilities with ESRI, Google Maps, and OL3 for route, geofencing, multi-map, and technician workflows.</p></div>
+</section>
+
+<section class="card full">
+<div class="label">Recognition</div>
+<h2>Pillar Individual Award · Blue Yonder India</h2>
+<p style="color:var(--muted);line-height:1.6;margin-top:-6px">Recognized as <strong>one of 18 recipients</strong> across Blue Yonder's India Product Development organization during my first year at the company.</p>
+<div class="award-preview" style="margin-top:18px"><img src="krishna_pillar_award.png" alt="Blue Yonder India Excellence Awards — Pillar Individual Award, Q1 2025"></div>
+</section>
+
+<section class="card">
+<div class="label">Projects</div>
+<div class="item"><h3>Kafka Replica</h3><p>Recreated Kafka Producer, Consumer, Broker, and Zookeeper modules using Python sockets with a custom messaging protocol and concurrent multi-producer/multi-consumer operation.</p></div>
+<div class="item"><h3>Personalized Recommendation of Chess Puzzles</h3><p>Built a recommendation system from player game histories to identify tactical weaknesses; presented at ICCIIS 2024.</p></div>
+</section>
+
+<section class="card">
+<div class="label">Education</div>
+<div class="item"><h3>North Carolina State University</h3><p>Master of Computer Science · Expected May 2028</p></div>
+<div class="item"><h3>PES University</h3><p>B.Tech, Computer Science · GPA 8.38/10 · May 2024</p></div>
+</section>
+
+<section class="card full">
+<div class="label">Technical Skills</div>
+<h2>Languages, frameworks & systems</h2>
+<div class="tags">
+<span class="tag">Python</span><span class="tag">Java</span><span class="tag">C++</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">SQL</span>
+<span class="tag">FastAPI</span><span class="tag">Spring Boot</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Angular</span><span class="tag">LangChain</span>
+<span class="tag">Kafka</span><span class="tag">Snowflake</span><span class="tag">MongoDB</span><span class="tag">Elasticsearch</span><span class="tag">Azure</span><span class="tag">Azure Blob Storage</span>
+<span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">GraphQL</span><span class="tag">Git</span><span class="tag">CI/CD</span><span class="tag">Jest</span>
+<span class="tag">TensorFlow</span><span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">Microservices</span><span class="tag">Distributed Systems</span><span class="tag">Python Sockets</span>
+</div>
+</section>
+
+<section class="card full cta">
+<h2>Let's connect.</h2>
+<p>I'm pursuing my M.S. in Computer Science at NC State and looking for software engineering opportunities across systems, backend, distributed systems, computer networks, operating systems, platform/infrastructure, full-stack, and intelligent software.</p>
+<div class="contact">669-366-4685 · <a href="mailto:kkattili@ncsu.edu">kkattili@ncsu.edu</a> · <a href="mailto:attilikrishnakireeti@ncsu.edu">attilikrishnakireeti@ncsu.edu</a></div>
+<div class="links"><a href="https://www.linkedin.com/in/krishna-attili-838490272" target="_blank">Connect on LinkedIn ↗</a></div>
+</section>
+
+</div>
+</div>
+</body>
+</html>
