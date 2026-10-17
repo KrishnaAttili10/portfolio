@@ -4,97 +4,829 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Krishna K Attili — Software Engineer</title>
+<meta name="description" content="Krishna K Attili: software engineer and M.S. Computer Science student at NC State. Backend, distributed systems, AI agents, and full-stack.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#111827;--muted:#5b6472;--line:#e5e7eb;--bg:#f7f8fb;--card:#fff;--accent:#4f46e5}
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.wrap{max-width:980px;margin:auto;padding:24px 18px 64px}
-.hero{padding:46px 8px 30px}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:var(--accent)}
-h1{font-size:clamp(38px,7vw,68px);line-height:.98;margin:12px 0}.hero p{font-size:20px;line-height:1.5;max-width:780px;color:var(--muted)}
-.contact{font-size:14px;color:var(--muted);margin-top:14px}.contact a{color:inherit}
-.links a{display:inline-block;margin:8px 8px 0 0;padding:11px 16px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);background:white;font-weight:650}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:25px;box-shadow:0 8px 30px rgba(17,24,39,.045)}
-.full{grid-column:1/-1} h2{font-size:22px;margin:0 0 15px}.label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}
-.award{border:2px solid #111827;padding:26px;border-radius:18px}.award .big{font-size:30px;font-weight:850;line-height:1.1;margin:8px 0 10px}.award p{color:var(--muted);line-height:1.55}
-.item{padding:16px 0;border-top:1px solid var(--line)}.item:first-child{border-top:0;padding-top:0}.item h3{margin:0 0 6px;font-size:18px}.item p{margin:0;color:var(--muted);line-height:1.55}
-.tags{display:flex;flex-wrap:wrap;gap:8px}.tag{padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:#fafafa;font-size:14px;font-weight:650}
-.award-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:center}.award-preview{display:block;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#f8fbff}.award-preview img{display:block;width:100%;height:auto}.cta{text-align:center;padding:35px 20px}.cta h2{font-size:28px}.cta p{color:var(--muted)}
-@media(max-width:700px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.hero{padding-top:25px}.award-layout{grid-template-columns:1fr}}
+:root{
+  --sky:#6EC6F0;
+  --sky-2:#BDE9FF;
+  --ink:#1B1B2F;
+  --muted:#4A4E69;
+  --card:#FFFDF5;
+  --coin:#FFD23F;
+  --coral:#FF6B4A;
+  --grass:#5DBB63;
+  --sand:#E9D8A6;
+  --rack:#2B2D42;
+  --ok:#2E9E4F;
+  --bad:#D7263D;
+  --px:"Press Start 2P",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;color:var(--ink);font-family:"Rubik",system-ui,sans-serif;font-size:17px;line-height:1.6;
+  background:linear-gradient(180deg,var(--sky) 0,var(--sky-2) 900px,var(--sky-2) 100%);background-color:var(--sky-2);position:relative;overflow-x:hidden}
+a{color:var(--ink)}
+:focus-visible{outline:4px solid var(--coral);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 20px 0;position:relative;z-index:1}
+
+/* Blocky clouds */
+.cloud{position:absolute;width:112px;height:24px;background:#fff;z-index:0;opacity:.9}
+.cloud::before{content:"";position:absolute;width:56px;height:24px;background:#fff;left:20px;top:-18px}
+.cloud::after{content:"";position:absolute;width:32px;height:16px;background:#fff;left:40px;top:-30px}
+
+/* Pixel boxes */
+.px{background:var(--card);border:4px solid var(--ink);box-shadow:6px 6px 0 rgba(27,27,47,.22)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 12px}
+.btn{display:inline-flex;align-items:center;font-family:var(--px);font-size:11px;line-height:1;padding:13px 16px;border:4px solid var(--ink);background:var(--card);color:var(--ink);text-decoration:none;cursor:pointer;
+  box-shadow:inset -4px -4px 0 rgba(0,0,0,.14),4px 4px 0 var(--ink);transition:transform .06s,box-shadow .06s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:inset -4px -4px 0 rgba(0,0,0,.14),5px 5px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:inset 4px 4px 0 rgba(0,0,0,.14),0 0 0 var(--ink)}
+.btn.coin{background:var(--coin)}
+.btn.small{font-size:9.5px;padding:10px 12px}
+
+/* ---------- Hero ---------- */
+.hero{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);gap:36px;align-items:center}
+.player{font-family:var(--px);font-size:11px;color:var(--ink);margin:0 0 14px;display:inline-block;background:var(--coin);border:3px solid var(--ink);padding:7px 9px}
+.hero h1{font-family:var(--px);font-weight:400;font-size:clamp(26px,4vw,40px);line-height:1.25;margin:0 0 18px;color:var(--card);text-shadow:4px 4px 0 var(--ink),-2px -2px 0 var(--ink),2px -2px 0 var(--ink),-2px 2px 0 var(--ink)}
+.tag{font-size:18.5px;margin:0;max-width:40ch}
+.contact-line{font-size:15px;color:var(--muted)}
+.game-box{padding:0;position:relative;overflow:hidden}
+#game{display:block;width:100%;image-rendering:pixelated;image-rendering:crisp-edges;cursor:pointer;touch-action:manipulation}
+#game:focus-visible{outline:4px solid var(--coral);outline-offset:-4px}
+.game-cap{font-size:14.5px;color:var(--muted);margin:12px 2px 0}
+kbd{font-family:var(--px);font-size:9px;border:2px solid var(--ink);border-bottom-width:4px;padding:2px 6px;background:var(--card)}
+
+/* ---------- Sections ---------- */
+section{margin-top:96px}
+.sec-head{margin-bottom:22px}
+.lvl{font-family:var(--px);font-size:10px;display:inline-block;background:var(--ink);color:var(--coin);padding:6px 8px;margin-bottom:12px}
+.sec-head h2{font-family:var(--px);font-weight:400;font-size:clamp(18px,2.8vw,26px);line-height:1.35;margin:0}
+.sec-head p{margin:8px 0 0;color:var(--muted);font-size:15.5px}
+
+/* Experience quest log */
+.role{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;padding:18px 22px;border-bottom:4px solid var(--ink);background:var(--coin)}
+.role h3{margin:0;font-size:21px}
+.role .when{font-weight:700;align-self:center}
+.role p{flex-basis:100%;margin:0;font-size:15px}
+.quest{display:grid;grid-template-columns:minmax(0,1fr) 190px;border-bottom:2px dashed #C9C3AE}
+.quest .what{padding:15px 22px}
+.quest .what strong{display:block;font-size:17.5px;margin-bottom:2px}
+.quest .what span{color:var(--muted);font-size:15.5px}
+.quest .qty{border-left:2px dashed #C9C3AE;padding:15px 16px;font-family:var(--px);font-size:15px;line-height:1.3;display:flex;flex-direction:column;justify-content:center;color:var(--coral)}
+.quest .qty small{font-family:"Rubik",sans-serif;font-size:13px;color:var(--muted);margin-top:6px}
+.subrole{padding:16px 22px;border-bottom:2px dashed #C9C3AE}
+.subrole:last-child{border-bottom:0}
+.subrole h4{margin:0;font-size:17.5px}
+.subrole .when{color:var(--muted);font-size:14.5px;font-weight:500}
+.subrole p{margin:6px 0 0;color:var(--muted);font-size:15.5px}
+
+/* Bonus stage: race */
+.race{margin-top:22px;padding:20px 22px}
+.race h3{margin:0 0 4px;font-size:19px}
+.race p{margin:0 0 16px;color:var(--muted);font-size:15px}
+.lane{display:grid;grid-template-columns:140px minmax(0,1fr) 84px;gap:12px;align-items:center;margin:10px 0;font-weight:700;font-size:15px}
+.track{height:30px;border:4px solid var(--ink);background:#fff;position:relative;overflow:hidden}
+.fill{position:absolute;inset:0 auto 0 0;width:0;background:repeating-linear-gradient(90deg,var(--coral) 0 12px,#FF8A6E 12px 24px)}
+.fill.fast{background:repeating-linear-gradient(90deg,var(--grass) 0 12px,#7FD185 12px 24px)}
+.time{font-family:var(--px);font-size:11px;text-align:right}
+
+/* Boss fight: gateway */
+.gate-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.controls{padding:22px;border-right:4px solid var(--ink)}
+.controls h3,.log h3{margin:0 0 6px;font-size:19px}
+.lead{margin:0 0 16px;color:var(--muted);font-size:15px}
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+select{width:100%;font:inherit;font-size:16px;padding:9px 10px;border:4px solid var(--ink);background:#fff;color:var(--ink);border-radius:0}
+.toggle{display:flex;align-items:center;gap:10px;font-weight:500;font-size:15px;cursor:pointer;margin-bottom:16px}
+.toggle input{width:22px;height:22px;accent-color:var(--ink)}
+.verdict{margin-top:16px;border:4px solid var(--ink);background:#fff;padding:14px;min-height:96px}
+.verdict .v{font-family:var(--px);font-size:18px;line-height:1.2}
+.verdict .v.ok{color:var(--ok)}
+.verdict .v.no{color:var(--bad)}
+.verdict p{margin:8px 0 0;font-size:15px}
+.log{padding:22px;display:flex;flex-direction:column;min-width:0;background:#F6F1DF}
+.entries{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;border:4px solid var(--ink);background:#fff;height:280px;overflow:auto;padding:8px 10px}
+.entry{padding:6px 0;border-bottom:1px dashed #C9C3AE}
+.entry:last-child{border-bottom:0}
+.r-ok{color:var(--ok);font-weight:700}
+.r-no{color:var(--bad);font-weight:700}
+.entry .h{color:var(--muted);word-break:break-all}
+.entry.broken{background:#FDE7EA}
+.log-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.chain-status{margin-top:12px;font-weight:700;font-size:15px;min-height:1.6em}
+.empty{color:var(--muted)}
+
+/* Side quests */
+.projects{display:grid;grid-template-columns:1.25fr 1fr;gap:24px}
+.proj{padding:22px}
+.proj h3{margin:0 0 4px;font-size:22px}
+.proj .meta{color:var(--muted);font-size:14.5px;margin-bottom:12px;font-weight:500}
+.proj p{margin:0 0 12px}
+.proj ul{margin:0 0 18px;padding:0;list-style:none}
+.proj li{padding-left:22px;position:relative}
+.proj li::before{content:"";position:absolute;left:2px;top:.5em;width:10px;height:10px;background:var(--coin);border:2px solid var(--ink)}
+.small{font-size:14px;color:var(--muted)}
+
+/* Achievement */
+.award{display:grid;grid-template-columns:1fr 1.1fr;gap:26px;align-items:center;padding:24px}
+.trophy{font-family:var(--px);font-size:10px;color:var(--coral);margin:0 0 12px}
+.award .big{font-family:var(--px);font-size:clamp(18px,2.6vw,26px);line-height:1.4;margin:0 0 14px}
+.award p{margin:0;color:var(--muted)}
+.award img{display:block;width:100%;height:auto;border:4px solid var(--ink)}
+
+/* Power-ups */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.shelf h3{margin:0 0 10px;font-size:16px}
+.shelf + .shelf{margin-top:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:3px solid var(--ink);background:var(--card);padding:6px 11px;font:inherit;font-size:15px;font-weight:500;cursor:pointer;color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.chip:hover{background:#FFF3C4}
+.chip[aria-pressed="true"]{background:var(--coin);transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.where{margin-top:18px;padding:14px 16px;font-size:16px;min-height:58px}
+.edu .item{padding:16px 18px;margin-bottom:14px}
+.edu h3{margin:0;font-size:18px}
+.edu p{margin:4px 0 0;color:var(--muted);font-size:15.5px}
+
+/* Footer: continue screen on the ground */
+.ground{margin-top:110px;background:var(--sand);border-top:10px solid var(--grass);box-shadow:inset 0 4px 0 #4CA052;position:relative;z-index:1}
+.ground::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px;background:repeating-linear-gradient(90deg,transparent 0 16px,rgba(0,0,0,.12) 16px 24px)}
+footer{max-width:1080px;margin:0 auto;padding:40px 20px 110px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+.continue{font-family:var(--px);font-size:clamp(20px,3.6vw,34px);line-height:1.3;margin:0 0 12px}
+.continue .count{color:var(--coral)}
+footer p{margin:0 0 6px;color:var(--ink)}
+
+/* Cheat console */
+.term-btn{position:fixed;right:18px;bottom:18px;z-index:20}
+.term{position:fixed;right:18px;bottom:78px;z-index:21;width:min(560px,calc(100vw - 36px));height:min(380px,60vh);background:var(--ink);color:#F3F0E6;border:4px solid var(--coin);display:none;flex-direction:column;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;box-shadow:8px 8px 0 rgba(27,27,47,.35)}
+.term.open{display:flex}
+.term-top{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--coin);color:var(--ink);font-family:var(--px);font-size:9.5px}
+.term-top button{background:none;border:0;font:inherit;cursor:pointer;color:var(--ink)}
+.term-out{flex:1;overflow:auto;padding:10px 12px;white-space:pre-wrap}
+.term-in{display:flex;gap:8px;padding:8px 12px;border-top:1px solid #3D405B}
+.term-in span{color:var(--coin)}
+.term-in input{flex:1;min-width:0;background:transparent;border:0;color:#fff;font:inherit;outline:none;caret-color:var(--coin)}
+.y{color:var(--coin)}
+
+/* Crash screen + toast */
+.panic{position:fixed;inset:0;z-index:60;background:var(--ink);color:#fff;display:none;place-content:center;padding:24px;cursor:pointer;text-align:center}
+.panic.show{display:grid}
+.panic h2{font-family:var(--px);font-weight:400;color:var(--coral);font-size:clamp(20px,4vw,36px);margin:0 0 20px}
+.panic pre{white-space:pre-wrap;margin:0 auto;max-width:560px;font-family:"Rubik",sans-serif;font-size:17px;text-align:left}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);background:var(--coin);border:4px solid var(--ink);padding:10px 16px;font-weight:700;z-index:55;display:none;max-width:calc(100vw - 32px)}
+
+/* Responsive */
+@media (max-width:860px){
+  .hero,.gate-body,.projects,.award,.skills-grid,footer{grid-template-columns:1fr}
+  .hero{gap:24px}
+  .controls{border-right:0;border-bottom:4px solid var(--ink)}
+  .quest{grid-template-columns:1fr}
+  .quest .qty{border-left:0;flex-direction:row;align-items:baseline;gap:10px;padding:0 22px 15px;font-size:13px}
+  .lane{grid-template-columns:96px minmax(0,1fr) 70px;font-size:14px}
+}
+@media (max-width:480px){
+  body{font-size:16px}
+  .wrap{padding:26px 16px 0}
+  .role,.quest .what,.subrole{padding-left:16px;padding-right:16px}
+  .quest .qty{padding:0 16px 15px}
+  .controls,.log,.proj,.race,.award{padding:18px 16px}
+  .btn{font-size:9.5px;padding:11px 12px}
+  .term-btn{right:12px;bottom:12px}
+  .time{font-size:9px}
+}
 </style>
 </head>
 <body>
+<div class="cloud" style="left:6%;top:70px" aria-hidden="true"></div>
+<div class="cloud" style="right:8%;top:40px;transform:scale(.7)" aria-hidden="true"></div>
+<div class="cloud" style="left:44%;top:620px;transform:scale(.8)" aria-hidden="true"></div>
+<div class="cloud" style="right:4%;top:1500px" aria-hidden="true"></div>
+<div class="cloud" style="left:3%;top:2600px;transform:scale(.75)" aria-hidden="true"></div>
+
 <div class="wrap">
 
-<section class="hero">
-<div class="eyebrow">Software Engineer · Systems · Backend · Infrastructure · Full-Stack</div>
-<h1>Krishna K Attili</h1>
-<p><strong>M.S. Computer Science @ NC State</strong> · Software engineer with 2+ years of experience building production software across backend services, distributed systems, platform infrastructure, data pipelines, and full-stack applications at Blue Yonder. I enjoy solving systems problems across the stack — from networking and operating-systems fundamentals to scalable services, infrastructure, and intelligent software.</p>
-<div class="contact">
-<a href="tel:+16693664685">669-366-4685</a> ·
-<a href="mailto:kkattili@ncsu.edu">kkattili@ncsu.edu</a> ·
-<a href="mailto:attilikrishnakireeti@ncsu.edu">attilikrishnakireeti@ncsu.edu</a>
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div>
+    <p class="player">PLAYER 1</p>
+    <h1>Krishna K Attili</h1>
+    <p class="tag">Software engineer and M.S. Computer Science student at NC State. I build backends, data pipelines, and AI agents. Currently looking for a Summer 2027 software engineering internship.</p>
+    <div class="btns">
+      <a class="btn coin" href="https://github.com/KrishnaAttili10" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/krishna-attili-838490272" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:kkattili@ncsu.edu">Email</a>
+    </div>
+    <div class="contact-line"><a href="mailto:kkattili@ncsu.edu">kkattili@ncsu.edu</a>, <a href="mailto:attilikrishnakireeti@gmail.com">attilikrishnakireeti@gmail.com</a>, <a href="tel:+16693664685">669-366-4685</a></div>
+  </div>
+  <div>
+    <div class="game-box px"><canvas id="game" tabindex="0" aria-label="Flap game: click, tap, or press Space to fly a coffee mug past server racks. Each rack you clear unlocks a fact about Krishna."></canvas></div>
+    <p class="game-cap">Fly my coffee mug past the server racks. Each rack you clear unlocks a fact from my resume. Click, tap, or press <kbd>Space</kbd>. Press <kbd>`</kbd> for cheats.</p>
+  </div>
+</header>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience" aria-labelledby="exp-h">
+  <div class="sec-head"><span class="lvl">LEVEL 1</span><h2 id="exp-h">Quest log</h2><p>Two years of shipping production code at Blue Yonder, Bengaluru.</p></div>
+
+  <div class="px">
+    <div class="role">
+      <h3>Software Engineer</h3>
+      <div class="when">Jul 2025 to Aug 2026</div>
+      <p>Leveled up from Associate Software Engineer (Jun 2024 to Jul 2025) in 13 months.</p>
+    </div>
+
+    <div class="quest"><div class="what"><strong>Root cause analysis AI agent</strong><span>Owned it end to end inside a warehouse operations chatbot. It helps teams figure out why shipments run late, orders come up short, or lead times slip. Python, FastAPI, LangChain, React.</span></div><div class="qty">500+<small>people using it</small></div></div>
+
+    <div class="quest"><div class="what"><strong>Faster answers</strong><span>Moved the agent's results from JSON files in Azure Blob Storage to MongoDB documents. Race them below.</span></div><div class="qty">2s → 0.5s<small>API latency</small></div></div>
+
+    <div class="quest"><div class="what"><strong>Event-driven pipeline</strong><span>Designed 40+ scheduled jobs refreshing every 30 to 60 minutes. Kafka producers and consumers decouple scheduling from execution, and Snowflake results are stored for quick reads.</span></div><div class="qty">40+<small>scheduled jobs</small></div></div>
+
+    <div class="quest"><div class="what"><strong>Multithreading the slow parts</strong><span>Parallelized sequential analysis and AI brief generation with Python multithreading so every refresh fits its window.</span></div><div class="qty">90%<small>less runtime</small></div></div>
+
+    <div class="quest"><div class="what"><strong>A UI framework other teams actually used</strong><span>A configuration-driven React/TypeScript slot system that lets teams add popovers, text bars, and custom components without touching core code.</span></div><div class="qty">Every team<small>in the frontend org</small></div></div>
+
+    <div class="quest"><div class="what"><strong>One API instead of five</strong><span>Built a new stream type for publishing data downstream and consolidated five type-specific APIs into one endpoint that detects the type from the request.</span></div><div class="qty">5 → 1<small>APIs</small></div></div>
+
+    <div class="quest"><div class="what"><strong>Tests where there were none</strong><span>Led functional and integration testing: built Kafka-based test infrastructure for lifecycle and status events, wrote the suite, and helped the team adopt it. Kept 95%+ Jest coverage on workflow-editor features.</span></div><div class="qty">95%+<small>unit-test coverage</small></div></div>
+
+    <div class="quest"><div class="what"><strong>Platform tooling and demos</strong><span>Automated Kafka topic provisioning behind internal REST APIs so onboarding became self-service, and contributed to customer-facing demos of the RCA workflow.</span></div><div class="qty">Self-service<small>onboarding</small></div></div>
+
+    <div class="subrole">
+      <h4>Software Engineering Intern, Blue Yonder</h4>
+      <div class="when">Jan 2024 to Jun 2024</div>
+      <p>Built a Java Spring Boot microservice with REST APIs, CI/CD pipelines, and functional tests, plus small Node.js/React internal tools.</p>
+    </div>
+    <div class="subrole">
+      <h4>Software Engineering Intern, Saartha Pvt Ltd</h4>
+      <div class="when">Jun 2023 to Aug 2023</div>
+      <p>Built JavaScript mapping features for field-service software with ESRI, Google Maps, and OpenLayers: multiple maps, routing, and geofencing.</p>
+    </div>
+  </div>
+
+  <div class="race px" aria-labelledby="race-h">
+    <h3 id="race-h">Bonus stage: the 2-second problem</h3>
+    <p>Same query, before and after my MongoDB migration. Speeds are scaled to the real numbers.</p>
+    <div class="lane"><span>Azure Blob</span><div class="track"><div class="fill" id="car-slow"></div></div><span class="time" id="t-slow">0ms</span></div>
+    <div class="lane"><span>MongoDB</span><div class="track"><div class="fill fast" id="car-fast"></div></div><span class="time" id="t-fast">0ms</span></div>
+    <div class="btns" style="margin-bottom:0"><button class="btn coin" id="race-btn" type="button">Start race</button></div>
+  </div>
+</section>
+
+<!-- ================= BOSS FIGHT: GATEWAY ================= -->
+<section id="gateway" aria-labelledby="gate-h">
+  <div class="sec-head"><span class="lvl">LEVEL 2: BOSS FIGHT</span><h2 id="gate-h">Try to get past my gateway</h2><p>A playable version of my MCP Security Gateway. It has never lost.</p></div>
+  <div class="px">
+    <div class="gate-body">
+      <div class="controls">
+        <h3>Send a tool call</h3>
+        <p class="lead">AI agents call tools through MCP. My gateway checks four things before any call reaches a tool. Pick a client and see what happens.</p>
+        <div class="field">
+          <label for="g-client">Client</label>
+          <select id="g-client">
+            <option value="alpha">agent-alpha (valid token)</option>
+            <option value="beta">agent-beta (valid token)</option>
+            <option value="sketchy">sketchy-bot (no token, big dreams)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="g-tool">Tool</label>
+          <select id="g-tool">
+            <option value="check_inventory">check_inventory</option>
+            <option value="verify_license">verify_license</option>
+            <option value="delete_production_db">delete_production_db</option>
+          </select>
+        </div>
+        <label class="toggle"><input type="checkbox" id="g-consent" checked> The data owner has given consent</label>
+        <button class="btn coin" id="g-send" type="button">Send request</button>
+        <div class="verdict" id="g-verdict" aria-live="polite"><p class="empty">No requests yet. The boss is waiting.</p></div>
+      </div>
+      <div class="log">
+        <h3>Audit log</h3>
+        <p class="lead">Every decision is chained with SHA-256, so editing an old entry breaks every hash after it.</p>
+        <div class="entries" id="g-log" tabindex="0" aria-label="Audit log entries"><div class="empty">Empty, for now.</div></div>
+        <div class="log-actions">
+          <button class="btn small" id="g-tamper" type="button">Tamper with an entry</button>
+          <button class="btn small" id="g-verify" type="button">Verify chain</button>
+        </div>
+        <div class="chain-status" id="g-status" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIDE QUESTS ================= -->
+<section id="projects" aria-labelledby="proj-h">
+  <div class="sec-head"><span class="lvl">LEVEL 3</span><h2 id="proj-h">Side quests</h2><p>Built after hours, on purpose.</p></div>
+  <div class="projects">
+    <article class="proj px">
+      <h3>MCP Security Gateway</h3>
+      <div class="meta">Python, MCP SDK, FastAPI, SQLite</div>
+      <p>A security layer that sits between AI agents and the tools they call, so a connected client cannot simply do whatever it wants.</p>
+      <ul>
+        <li>Bearer-token authentication and per-client authorization</li>
+        <li>Consent that can be revoked instantly through a separate API</li>
+        <li>Thread-safe per-client rate limiting</li>
+        <li>Tamper-evident audit logs built on SHA-256 hash chaining</li>
+      </ul>
+      <a class="btn small" href="https://github.com/KrishnaAttili10" target="_blank" rel="noopener">See it on GitHub</a>
+    </article>
+    <article class="proj px">
+      <h3>Chess Puzzle Recommender</h3>
+      <div class="meta">Python, scikit-learn, Pandas. Presented at ICCIIS 2024.</div>
+      <p>Reads a player's game history, spots their tactical weaknesses, and recommends puzzles that target them. Board-state representations plus a comparison of similarity approaches.</p>
+      <p class="small">Yes, it found my weaknesses too. We do not talk about them.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ================= ACHIEVEMENT ================= -->
+<section id="award" aria-labelledby="award-h">
+  <div class="sec-head"><span class="lvl">ACHIEVEMENT UNLOCKED</span><h2 id="award-h">Pillar Individual Award</h2><p>Blue Yonder India Excellence Awards, Q1 2025.</p></div>
+  <div class="award px">
+    <div>
+      <p class="trophy">RARE: 2% OF PLAYERS</p>
+      <p class="big">1 of 18 out of ~900 engineers</p>
+      <p>Awarded across Blue Yonder's India Product Development organization, in my first year at the company.</p>
+    </div>
+    <img src="krishna_pillar_award.png" alt="Blue Yonder India Excellence Awards, Pillar Individual Award, Q1 2025" loading="lazy">
+  </div>
+</section>
+
+<!-- ================= POWER-UPS & SAVE POINTS ================= -->
+<section id="skills" aria-labelledby="skills-h">
+  <div class="sec-head"><span class="lvl">INVENTORY</span><h2 id="skills-h">Power-ups</h2><p>Click any skill to see where I used it.</p></div>
+  <div class="skills-grid">
+    <div>
+      <div class="shelf"><h3>Languages</h3><div class="chips" data-shelf></div></div>
+      <div class="shelf"><h3>Frameworks and data</h3><div class="chips" data-shelf2></div></div>
+      <div class="shelf"><h3>Infrastructure, testing, and AI</h3><div class="chips" data-shelf3></div></div>
+      <div class="where px" id="where" aria-live="polite">Pick a power-up. I will tell you where I used it, honestly.</div>
+    </div>
+    <div class="edu">
+      <div class="shelf"><h3>Save points</h3></div>
+      <div class="item px"><h3>North Carolina State University</h3><p>Master of Computer Science, expected May 2028</p></div>
+      <div class="item px"><h3>PES University</h3><p>B.Tech in Computer Science, May 2024. GPA 8.38/10, Distinction (DAC) Scholarship all 8 semesters.</p></div>
+      <div class="item px"><h3>Off the keyboard</h3><p>Founded Patri Run Club (~25 members), organized 32+ football tournaments, and finished the Bangalore Half Marathon in 2025 and 2026.</p></div>
+    </div>
+  </div>
+</section>
 </div>
-<div class="links">
-<a href="https://www.linkedin.com/in/krishna-attili-838490272" target="_blank">LinkedIn ↗</a>
+
+<div class="ground">
+  <footer>
+    <div>
+      <p class="continue" id="continue" aria-live="polite">CONTINUE? <span class="count" id="count">10</span></p>
+      <p id="continue-sub">I'm looking for Summer 2027 software engineering internships in backend, distributed systems, platform, AI agents, and full-stack work.</p>
+      <div class="btns">
+        <a class="btn coin" href="mailto:kkattili@ncsu.edu">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/krishna-attili-838490272" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/KrishnaAttili10" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="small" style="align-self:end;color:var(--ink)">Handmade in plain HTML, CSS, and JavaScript. No mugs were harmed, despite how you fly.<br>© <span id="yr"></span> Krishna K Attili</div>
+  </footer>
 </div>
-</section>
 
-<div class="grid">
-
-<section class="card full">
-<div class="label">Experience</div>
-<h2>Blue Yonder · Software Engineer / Associate Software Engineer</h2>
-<p style="color:var(--muted);line-height:1.6;margin-top:-6px">Jul 2024 – Aug 2026 · Bengaluru, India</p>
-<div class="item"><h3>RCA & warehouse operations</h3><p style="margin-bottom:10px"><strong>RCA (Root Cause Analysis)</strong> helps warehouse teams investigate operational problems such as late shipments, short orders, and order lead-time issues by surfacing likely underlying causes from warehouse data.</p><p>Owned the RCA sub-agent end-to-end within an enterprise warehouse-operations platform, integrating Python, FastAPI, Snowflake, Kafka, MongoDB, Azure Blob Storage, and LangChain.</p></div>
-<div class="item"><h3>Distributed processing</h3><p>Designed the pipeline supporting 40+ scheduled jobs running every 30–60 minutes, with Kafka producers and consumers coordinating Snowflake queries, RCA computation, and persisted results for low-latency retrieval.</p></div>
-<div class="item"><h3>Performance & data infrastructure</h3><p>Parallelized RCA and AI brief-generation workloads with Python multithreading, reducing scheduled-job execution time by more than 50%. Migrated precomputed RCA results from Azure Blob Storage to MongoDB to improve retrieval performance.</p></div>
-<div class="item"><h3>Platform engineering</h3><p>Built internal APIs and automated Kafka topic provisioning for enterprise platform services, along with Kafka-based test infrastructure for consuming and validating application lifecycle and status events.</p></div>
-<div class="item"><h3>Full-stack & developer tooling</h3><p>Developed React/TypeScript workflow-editor functionality including control connectors, parallel branches, nested actions, and reusable components. Built a configurable slot-based UI extension system used to inject custom UI components through configuration.</p></div>
-<div class="item"><h3>Product impact</h3><p>Contributed to product integration and customer-facing demonstrations, helping turn RCA workflows into a practical warehouse-operations capability.</p></div>
-
-<div class="item"><h2 style="margin:0 0 6px">Blue Yonder · Software Engineering Intern</h2><p style="margin-bottom:10px">Jan 2024 – Jun 2024 · Bengaluru, India</p><p>Built Spring Boot microservices and Java APIs, contributed to React/Node.js applications, and worked across testing, CI/CD, and warehouse-management-system product development.</p></div>
-
-<div class="item"><h2 style="margin:0 0 6px">Saartha Pvt Ltd · Software Engineering Intern</h2><p style="margin-bottom:10px">Jun 2023 – Aug 2023</p><p>Worked on field-service-management software, building geospatial integrations and mapping utilities with ESRI, Google Maps, and OL3 for route, geofencing, multi-map, and technician workflows.</p></div>
-</section>
-
-<section class="card full">
-<div class="label">Recognition</div>
-<h2>Pillar Individual Award · Blue Yonder India</h2>
-<p style="color:var(--muted);line-height:1.6;margin-top:-6px">Recognized as <strong>one of 18 recipients</strong> across Blue Yonder's India Product Development organization during my first year at the company.</p>
-<div class="award-preview" style="margin-top:18px"><img src="krishna_pillar_award.png" alt="Blue Yonder India Excellence Awards — Pillar Individual Award, Q1 2025"></div>
-</section>
-
-<section class="card">
-<div class="label">Projects</div>
-<div class="item"><h3>Kafka Replica</h3><p>Recreated Kafka Producer, Consumer, Broker, and Zookeeper modules using Python sockets with a custom messaging protocol and concurrent multi-producer/multi-consumer operation.</p></div>
-<div class="item"><h3>Personalized Recommendation of Chess Puzzles</h3><p>Built a recommendation system from player game histories to identify tactical weaknesses; presented at ICCIIS 2024.</p></div>
-</section>
-
-<section class="card">
-<div class="label">Education</div>
-<div class="item"><h3>North Carolina State University</h3><p>Master of Computer Science · Expected May 2028</p></div>
-<div class="item"><h3>PES University</h3><p>B.Tech, Computer Science · GPA 8.38/10 · May 2024</p></div>
-</section>
-
-<section class="card full">
-<div class="label">Technical Skills</div>
-<h2>Languages, frameworks & systems</h2>
-<div class="tags">
-<span class="tag">Python</span><span class="tag">Java</span><span class="tag">C++</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">SQL</span>
-<span class="tag">FastAPI</span><span class="tag">Spring Boot</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Angular</span><span class="tag">LangChain</span>
-<span class="tag">Kafka</span><span class="tag">Snowflake</span><span class="tag">MongoDB</span><span class="tag">Elasticsearch</span><span class="tag">Azure</span><span class="tag">Azure Blob Storage</span>
-<span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">GraphQL</span><span class="tag">Git</span><span class="tag">CI/CD</span><span class="tag">Jest</span>
-<span class="tag">TensorFlow</span><span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">Microservices</span><span class="tag">Distributed Systems</span><span class="tag">Python Sockets</span>
+<button class="btn coin term-btn" id="term-btn" type="button" aria-controls="term" aria-expanded="false">Cheats</button>
+<div class="term" id="term" role="dialog" aria-label="Cheat console">
+  <div class="term-top"><span>CHEAT CONSOLE</span><button type="button" id="term-close" aria-label="Close cheat console">X</button></div>
+  <div class="term-out" id="term-out"></div>
+  <form class="term-in" id="term-form"><span>&gt;</span><input id="term-input" autocomplete="off" spellcheck="false" aria-label="Cheat console input"></form>
 </div>
-</section>
+<div class="panic" id="panic" role="alert"><div><h2>GAME CRASHED</h2><pre id="panic-text"></pre></div></div>
+<div class="toast" id="toast" role="status"></div>
 
-<section class="card full cta">
-<h2>Let's connect.</h2>
-<p>I'm pursuing my M.S. in Computer Science at NC State and looking for software engineering opportunities across systems, backend, distributed systems, computer networks, operating systems, platform/infrastructure, full-stack, and intelligent software.</p>
-<div class="contact">669-366-4685 · <a href="mailto:kkattili@ncsu.edu">kkattili@ncsu.edu</a> · <a href="mailto:attilikrishnakireeti@ncsu.edu">attilikrishnakireeti@ncsu.edu</a></div>
-<div class="links"><a href="https://www.linkedin.com/in/krishna-attili-838490272" target="_blank">Connect on LinkedIn ↗</a></div>
-</section>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const toast = (msg) => { const t = document.getElementById('toast'); t.textContent = msg; t.style.display = 'block'; clearTimeout(t._h); t._h = setTimeout(() => t.style.display = 'none', 3500); };
+let EASY = false;
 
-</div>
-</div>
+/* =================== THE GAME =================== */
+(function(){
+  const c = document.getElementById('game'), g = c.getContext('2d');
+  const C = { ink:'#1B1B2F', card:'#FFFDF5', coin:'#FFD23F', coral:'#FF6B4A', grass:'#5DBB63', sand:'#E9D8A6', rack:'#2B2D42', rack2:'#3D405B', cap:'#8D99AE', sky:'#6EC6F0', sky2:'#BDE9FF', coffee:'#6F4E37' };
+  const FACTS = [
+    '500+ people use the AI agent I built',
+    'API latency: 2s down to 0.5s after my MongoDB migration',
+    '40+ scheduled jobs in my Kafka pipeline',
+    '90% less runtime with Python multithreading',
+    'Every frontend team adopted my React slot framework',
+    '5 APIs merged into 1',
+    'Promoted to Software Engineer in 13 months',
+    '1 of 18 award winners out of ~900 engineers',
+    'All facts unlocked. Now email me!'
+  ];
+  let W, H, GROUND, state = 'ready', mug, racks, score, frame = 0, acc = 0, last = 0, spawn = 0, banner = null, overAt = 0, groundX = 0, best = 0;
+  let clouds = [];
+  try { best = +localStorage.getItem('kka-flap-best') || 0; } catch(e) {}
+
+  function size(){
+    const narrow = c.parentElement.clientWidth < 520;
+    W = narrow ? 300 : 420; H = narrow ? 400 : 290; GROUND = H - 30;
+    c.width = W; c.height = H; c.style.aspectRatio = W + ' / ' + H;
+    g.imageSmoothingEnabled = false;
+    clouds = [{x:40,y:40,s:1},{x:W*0.55,y:80,s:.7},{x:W*0.85,y:30,s:.9}];
+  }
+  function reset(){ mug = { y: H/2 - 30, v: 0 }; racks = []; score = 0; spawn = 40; banner = null; }
+  size(); reset();
+  window.addEventListener('resize', () => { if (state !== 'play'){ size(); reset(); } });
+
+  const MX = () => Math.round(W * 0.22), MW = 24, MH = 20;
+  const GAP = () => (EASY ? 128 : 96) + (W < 400 ? 8 : 0);
+  const RW = 40, SPEED = 2.1;
+
+  function flap(){
+    if (state === 'ready'){ state = 'play'; reset(); mug.v = -5.2; }
+    else if (state === 'play'){ mug.v = -5.2; }
+    else if (state === 'over' && performance.now() - overAt > 600){ state = 'ready'; reset(); }
+  }
+  c.addEventListener('pointerdown', e => { e.preventDefault(); c.focus({preventScroll:true}); flap(); });
+  document.addEventListener('keydown', e => {
+    if ((e.code === 'Space' || e.key === 'ArrowUp') && (document.activeElement === c || state === 'play')){ e.preventDefault(); flap(); }
+  });
+
+  function step(){
+    frame++;
+    clouds.forEach(cl => { cl.x -= 0.25 * cl.s; if (cl.x < -60) cl.x = W + 20; });
+    if (state !== 'play') return;
+    groundX = (groundX + SPEED) % 16;
+    mug.v = Math.min(mug.v + 0.28, 7); mug.y += mug.v;
+    if (--spawn <= 0){
+      const gap = GAP(), min = 30, max = GROUND - 30 - gap;
+      racks.push({ x: W + 10, gy: Math.round(min + Math.random() * (max - min)), gap, passed: false });
+      spawn = W < 400 ? 100 : 95;
+    }
+    racks.forEach(r => r.x -= SPEED);
+    racks = racks.filter(r => r.x > -RW - 10);
+    const mx = MX(), box = { x: mx + 4, y: mug.y + 4, w: MW - 8, h: MH - 6 };
+    for (const r of racks){
+      if (!r.passed && r.x + RW < mx){ r.passed = true; score++; banner = { text: FACTS[Math.min(score - 1, FACTS.length - 1)], t: 170 }; }
+      const hitX = box.x + box.w > r.x && box.x < r.x + RW;
+      if (hitX && (box.y < r.gy || box.y + box.h > r.gy + r.gap)) return gameOver();
+    }
+    if (mug.y + MH > GROUND || mug.y < -30) return gameOver();
+    if (banner && --banner.t <= 0) banner = null;
+  }
+  function gameOver(){
+    state = 'over'; overAt = performance.now();
+    if (score > best){ best = score; try { localStorage.setItem('kka-flap-best', best); } catch(e) {} }
+  }
+
+  /* ---------- drawing ---------- */
+  const R = (x, y, w, h, col) => { g.fillStyle = col; g.fillRect(Math.round(x), Math.round(y), w, h); };
+  function cloud(x, y, s){ const w = 56*s, h = 12*s; R(x, y, w, h, '#fff'); R(x + 10*s, y - 9*s, 28*s, 9*s, '#fff'); R(x + 20*s, y - 15*s, 16*s, 6*s, '#fff'); }
+  function rack(x, y, h, fromTop){
+    R(x, y, RW, h, C.ink); R(x + 3, y + (fromTop ? 0 : 3), RW - 6, h - 3, C.rack);
+    const slots = Math.floor((h - 8) / 12);
+    for (let i = 0; i < slots; i++){
+      const yy = fromTop ? y + h - 14 - i * 12 : y + 8 + i * 12;
+      R(x + 6, yy, RW - 12, 8, C.rack2);
+      const blink = ((i * 7 + Math.floor(frame / 12)) % 5) === 0;
+      R(x + RW - 12, yy + 3, 3, 3, blink ? C.coin : '#3DDC84');
+      R(x + 9, yy + 3, 12, 2, '#55597A');
+    }
+    R(x - 4, fromTop ? y + h - 8 : y, RW + 8, 8, C.ink);
+    R(x - 2, fromTop ? y + h - 6 : y + 2, RW + 4, 4, C.cap);
+  }
+  function drawMug(){
+    const mx = MX();
+    g.save();
+    g.translate(mx + MW/2, mug.y + MH/2);
+    const tilt = state === 'ready' ? 0 : Math.max(-0.45, Math.min(0.9, mug.v * 0.08));
+    g.rotate(tilt);
+    g.translate(-MW/2, -MH/2);
+    const bob = state === 'ready' ? Math.round(Math.sin(frame / 10) * 2) : 0;
+    g.translate(0, bob);
+    const up = state === 'ready' ? (frame % 24 < 12) : (mug.v < 0 && frame % 10 < 5);
+    // steam
+    const s = frame % 24 < 12;
+    R(8 + (s ? 0 : 1), -4, 2, 4, 'rgba(255,255,255,.95)'); R(13 + (s ? 1 : 0), -7, 2, 5, 'rgba(255,255,255,.95)');
+    // wing
+    const wy = up ? 1 : 9;
+    R(-5, wy, 12, 8, C.ink); R(-3, wy + 2, 8, 4, C.card); R(-3, wy + 2, 2, 2, '#E6E1CF');
+    // body
+    R(4, 2, 17, 18, C.ink);
+    R(6, 4, 13, 14, EASY ? C.coin : C.card);
+    R(6, 4, 13, 3, C.coffee);
+    R(6, 12, 13, 3, C.coral);
+    // handle
+    R(21, 6, 5, 2, C.ink); R(24, 6, 2, 9, C.ink); R(21, 13, 5, 2, C.ink);
+    // face
+    R(9, 8, 2, 2, C.ink); R(14, 8, 2, 2, C.ink);
+    if (state === 'over'){ R(10, 16, 5, 1, C.ink); }
+    g.restore();
+  }
+  function text(str, x, y, size, col, align){
+    g.font = size + 'px "Press Start 2P", monospace'; g.textAlign = align || 'center'; g.textBaseline = 'top';
+    g.fillStyle = C.ink; g.fillText(str, x + 2, y + 2);
+    g.fillStyle = col; g.fillText(str, x, y);
+  }
+  function wrap(str, maxW, size){
+    g.font = size + 'px "Press Start 2P", monospace';
+    const words = str.split(' '), lines = []; let line = '';
+    for (const w of words){ const t = line ? line + ' ' + w : w; if (g.measureText(t).width > maxW && line){ lines.push(line); line = w; } else line = t; }
+    if (line) lines.push(line); return lines;
+  }
+  function panel(lines, size, y, pad){
+    const lh = size + 7, h = lines.length * lh + pad * 2 - 7;
+    g.font = size + 'px "Press Start 2P", monospace';
+    const w = Math.min(W - 24, Math.max(...lines.map(l => g.measureText(l).width)) + pad * 2);
+    const x = (W - w) / 2;
+    R(x - 3, y - 3, w + 6, h + 6, C.ink); R(x, y, w, h, C.card);
+    g.textAlign = 'center'; g.textBaseline = 'top'; g.fillStyle = C.ink;
+    lines.forEach((l, i) => g.fillText(l, W / 2, y + pad + i * lh));
+    return h;
+  }
+
+  function quip(){
+    if (score === 0) return 'sketchy-bot got further than that.';
+    if (score < 4) return 'Warm-up round. My first deploy went better.';
+    if (score < 9) return 'Not bad. My pipelines refresh about this reliably.';
+    return 'Okay, you are good. Hire us both.';
+  }
+
+  function draw(){
+    const grd = g.createLinearGradient(0, 0, 0, H); grd.addColorStop(0, C.sky); grd.addColorStop(1, C.sky2);
+    g.fillStyle = grd; g.fillRect(0, 0, W, H);
+    clouds.forEach(cl => cloud(cl.x, cl.y, cl.s));
+    // distant skyline (Raleigh-ish blocks)
+    for (let i = 0; i < W; i += 28){ const h = 18 + ((i * 37) % 30); R(i, GROUND - h, 22, h, '#A6DCF2'); }
+    racks.forEach(r => { rack(r.x, 0, r.gy, true); rack(r.x, r.gy + r.gap, GROUND - r.gy - r.gap, false); });
+    // ground
+    R(0, GROUND, W, H - GROUND, C.sand); R(0, GROUND, W, 6, C.grass); R(0, GROUND + 6, W, 2, '#4CA052');
+    for (let x = -groundX; x < W; x += 16) R(x, GROUND + 14, 8, 3, '#D9C48C');
+    drawMug();
+
+    const fs = W < 400 ? 9 : 8;
+    if (state === 'play'){
+      text(String(score), W / 2, 14, 20, C.card);
+      if (banner){ const lines = wrap(banner.text, W - 60, fs); panel(lines, fs, GROUND - 22 - lines.length * (fs + 7) - 10, 9); }
+    }
+    if (state === 'ready'){
+      text('FLAP THROUGH', W / 2, H * 0.14, W < 400 ? 14 : 16, C.coin);
+      text('MY RESUME', W / 2, H * 0.14 + 26, W < 400 ? 14 : 16, C.coin);
+      panel(wrap('Click, tap, or press Space to flap', W - 70, fs), fs, H * 0.62, 9);
+      if (best) text('BEST ' + best, W / 2, GROUND - 22, 8, C.card);
+    }
+    if (state === 'over'){
+      g.fillStyle = 'rgba(27,27,47,.35)'; g.fillRect(0, 0, W, H);
+      text('GAME OVER', W / 2, H * 0.16, W < 400 ? 18 : 20, C.coral);
+      const unlocked = Math.min(score, FACTS.length - 1);
+      const lines = ['Score ' + score + '   Best ' + best, 'Facts unlocked ' + unlocked + '/' + (FACTS.length - 1), '', ...wrap(quip(), W - 80, fs), '', 'Tap to try again'];
+      panel(lines, fs, H * 0.16 + 40, 12);
+    }
+  }
+
+  function loop(now){
+    if (!last) last = now;
+    acc += Math.min(100, now - last); last = now;
+    while (acc >= 1000 / 60){ step(); acc -= 1000 / 60; }
+    draw();
+    requestAnimationFrame(loop);
+  }
+  (document.fonts && document.fonts.load ? document.fonts.load('16px "Press Start 2P"').catch(() => {}) : Promise.resolve()).finally(() => requestAnimationFrame(loop));
+  window.__flapBest = () => best;
+})();
+
+/* =================== Latency race =================== */
+(function(){
+  const btn = document.getElementById('race-btn');
+  const slow = document.getElementById('car-slow'), fast = document.getElementById('car-fast');
+  const ts = document.getElementById('t-slow'), tf = document.getElementById('t-fast');
+  let running = false;
+  btn.addEventListener('click', () => {
+    if (running) return; running = true;
+    const SLOW = 2000, FAST = 450; const start = performance.now();
+    function f(now){
+      const t = now - start;
+      slow.style.width = Math.min(100, t / SLOW * 100) + '%';
+      fast.style.width = Math.min(100, t / FAST * 100) + '%';
+      ts.textContent = Math.round(Math.min(t, SLOW)) + 'ms';
+      tf.textContent = Math.round(Math.min(t, FAST)) + 'ms';
+      if (t < SLOW) requestAnimationFrame(f);
+      else { running = false; btn.textContent = 'Race again'; }
+    }
+    requestAnimationFrame(f);
+  });
+})();
+
+/* =================== Gateway boss fight =================== */
+(function(){
+  const $ = id => document.getElementById(id);
+  const tokens = { alpha: true, beta: true, sketchy: false };
+  const permissions = { alpha: ['check_inventory','verify_license'], beta: ['check_inventory'], sketchy: [] };
+  const log = []; const recent = {};
+  const LIMIT = 4, WINDOW = 10000;
+
+  async function sha256(text){
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+  const recordText = r => JSON.stringify({t:r.time, client:r.client, tool:r.tool, result:r.result, reason:r.reason});
+
+  function decide(client, tool, consent){
+    const now = Date.now();
+    recent[client] = (recent[client] || []).filter(x => now - x < WINDOW); recent[client].push(now);
+    if (!tokens[client]) return ['DENIED','401: no bearer token. Nice try, sketchy-bot.'];
+    if (recent[client].length > LIMIT) return ['DENIED','429: rate limit hit. Button mashing does not work on this boss. Try again in 10 seconds.'];
+    if (tool === 'delete_production_db') return ['DENIED','403: absolutely not. No client is authorized for this tool, ever.'];
+    if (!permissions[client].includes(tool)) return ['DENIED','403: agent-' + client + ' is not authorized to call ' + tool + '.'];
+    if (!consent) return ['DENIED','403: the data owner revoked consent. Authorization alone is not enough.'];
+    return ['ALLOWED','200: token valid, client authorized, consent granted, under the rate limit. Forwarded to the tool. +1 coin.'];
+  }
+
+  function esc(s){ return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
+  function render(brokenFrom){
+    const el = $('g-log');
+    if (!log.length){ el.innerHTML = '<div class="empty">Empty, for now.</div>'; return; }
+    el.innerHTML = log.map((r,i) => {
+      const cls = brokenFrom !== undefined && i >= brokenFrom ? 'entry broken' : 'entry';
+      const who = r.client === 'sketchy' ? 'sketchy-bot' : 'agent-' + r.client;
+      return '<div class="'+cls+'">#'+(i+1)+' '+esc(who)+' → '+esc(r.tool)+' <span class="'+(r.result==='ALLOWED'?'r-ok':'r-no')+'">'+r.result+'</span>'+
+             '<div class="h">prev '+r.prev.slice(0,12)+'… hash '+r.hash.slice(0,12)+'…</div></div>';
+    }).join('');
+    el.scrollTop = el.scrollHeight;
+  }
+
+  $('g-send').addEventListener('click', async () => {
+    const client = $('g-client').value, tool = $('g-tool').value, consent = $('g-consent').checked;
+    const [result, reason] = decide(client, tool, consent);
+    const prev = log.length ? log[log.length-1].hash : '0'.repeat(64);
+    const rec = { time: new Date().toISOString(), client, tool, result, reason, prev };
+    rec.hash = await sha256(prev + recordText(rec));
+    log.push(rec);
+    $('g-verdict').innerHTML = '<div class="v '+(result==='ALLOWED'?'ok':'no')+'">'+result+'</div><p>'+esc(reason)+'</p>';
+    $('g-status').textContent = '';
+    render();
+  });
+
+  $('g-tamper').addEventListener('click', () => {
+    if (log.length < 2){ $('g-status').textContent = 'Send at least two requests first. You need history to rewrite it.'; return; }
+    const i = Math.floor(Math.random() * (log.length - 1));
+    log[i].result = log[i].result === 'ALLOWED' ? 'DENIED' : 'ALLOWED';
+    $('g-status').textContent = 'Entry #' + (i+1) + ' was quietly edited. Now verify the chain.';
+    render();
+  });
+
+  $('g-verify').addEventListener('click', async () => {
+    if (!log.length){ $('g-status').textContent = 'Nothing to verify yet.'; return; }
+    let prev = '0'.repeat(64);
+    for (let i = 0; i < log.length; i++){
+      const expected = await sha256(prev + recordText(log[i]));
+      if (expected !== log[i].hash || log[i].prev !== prev){
+        $('g-status').innerHTML = '<span class="r-no">Chain broken at entry #'+(i+1)+'. Someone edited the log, and the hashes caught it.</span>';
+        render(i); return;
+      }
+      prev = log[i].hash;
+    }
+    $('g-status').innerHTML = '<span class="r-ok">All '+log.length+' entries verified. Nobody touched anything.</span>';
+    render();
+  });
+})();
+
+/* =================== Power-ups =================== */
+(function(){
+  const where = {
+    'Python':'The RCA AI agent backend, the 40+ job pipeline, multithreading for the 90% speedup, and my MCP gateway.',
+    'Java':'Spring Boot microservice as an intern, then platform services and APIs as an associate engineer.',
+    'TypeScript':'The slot framework every frontend team adopted, and workflow-editor features with 95%+ coverage.',
+    'JavaScript':'React work at Blue Yonder, Node.js internal tools, mapping features at Saartha, and the coffee mug game on this page.',
+    'SQL':'Snowflake queries feeding the RCA pipeline, plus SQL Server, PostgreSQL, and MySQL.',
+    'HTML/CSS':'Every UI I have shipped, including this page. No frameworks here, just honest markup.',
+    'C++':'In my toolkit. Happy to walk you through how I have used it.',
+    'React':'The RCA agent UI, the slot framework, the workflow editor, and custom dashboards.',
+    'FastAPI':'The RCA agent backend and my MCP gateway services.',
+    'Spring Boot':'My first production microservice, as an intern.',
+    'Node.js':'Internal tools during my internship.',
+    'Kafka':'Producers and consumers for 40+ scheduled jobs, automated topic provisioning, and Kafka-based test infrastructure.',
+    'MongoDB':'The migration that took API latency from about 2s to under 0.5s.',
+    'Snowflake':'The data source behind the RCA analysis pipeline.',
+    'PostgreSQL':'In my toolkit. Happy to walk you through how I have used it.',
+    'Azure':'Azure Blob Storage held the agent’s results before I moved them to MongoDB.',
+    'Docker':'In my toolkit. Happy to walk you through how I have used it.',
+    'Kubernetes':'In my toolkit. Happy to walk you through how I have used it.',
+    'CI/CD':'CI/CD pipelines for my Spring Boot microservice as an intern.',
+    'Jest':'Kept 95%+ unit-test coverage on workflow-editor features.',
+    'LangChain':'Part of the RCA AI agent stack.',
+    'Langfuse':'Tracing and evaluating the RCA agent.',
+    'MCP':'My MCP Security Gateway: authentication, authorization, consent, rate limits, hash-chained logs. Fight it above.',
+    'Claude Code':'AI-assisted development, used hands-on.',
+    'Codex':'AI-assisted development, used hands-on.',
+    'Dynatrace':'In my toolkit. Happy to walk you through how I have used it.'
+  };
+  const shelves = [
+    ['[data-shelf]', ['Python','Java','TypeScript','JavaScript','SQL','HTML/CSS','C++']],
+    ['[data-shelf2]', ['React','FastAPI','Spring Boot','Node.js','Kafka','MongoDB','Snowflake','PostgreSQL']],
+    ['[data-shelf3]', ['Azure','Docker','Kubernetes','CI/CD','Jest','Dynatrace','LangChain','Langfuse','MCP','Claude Code','Codex']]
+  ];
+  const out = document.getElementById('where');
+  shelves.forEach(([sel, list]) => {
+    const box = document.querySelector(sel);
+    list.forEach(name => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip'; b.textContent = name; b.setAttribute('aria-pressed','false');
+      b.addEventListener('click', () => {
+        document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed','false'));
+        b.setAttribute('aria-pressed','true');
+        out.innerHTML = '<strong>' + name + ':</strong> ' + where[name];
+      });
+      box.appendChild(b);
+    });
+  });
+})();
+
+/* =================== Continue? countdown =================== */
+(function(){
+  const el = document.getElementById('continue'), count = document.getElementById('count');
+  let started = false;
+  const go = () => {
+    if (started) return; started = true;
+    let n = 10;
+    const t = setInterval(() => {
+      n--; count.textContent = n;
+      if (n <= 0){ clearInterval(t); el.innerHTML = 'JUST KIDDING. <span class="count">NO TIME LIMIT.</span>'; }
+    }, 900);
+  };
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver((es, o) => { if (es.some(e => e.isIntersecting)){ go(); o.disconnect(); } }, { threshold: .6 }).observe(el);
+  } else go();
+})();
+
+/* =================== Cheat console =================== */
+function easyMode(){ EASY = !EASY; return EASY ? 'Easy mode on. Bigger gaps and a golden mug. We will not tell anyone.' : 'Easy mode off. Back to hard mode.'; }
+function panic(){
+  const p = document.getElementById('panic');
+  document.getElementById('panic-text').textContent =
+    'A recruiter just ran rm -rf /\n\n  Deleting portfolio...\n  Deleting resume...\n  Deleting every reason not to hire Krishna...\n\nJust kidding. Nothing was deleted. My gateway would never allow it.\n\n(click anywhere to continue)';
+  p.classList.add('show');
+  const hide = () => p.classList.remove('show');
+  p.onclick = hide; setTimeout(hide, 5000);
+}
+(function(){
+  const term = document.getElementById('term'), btn = document.getElementById('term-btn');
+  const out = document.getElementById('term-out'), input = document.getElementById('term-input');
+  const print = (s, cls) => { const d = document.createElement('div'); if (cls) d.className = cls; d.textContent = s; out.appendChild(d); out.scrollTop = out.scrollHeight; };
+  let greeted = false;
+  function open(){ term.classList.add('open'); btn.setAttribute('aria-expanded','true');
+    if (!greeted){ print('Cheat console unlocked. Type "help" for the list.', 'y'); greeted = true; }
+    input.focus(); }
+  function close(){ term.classList.remove('open'); btn.setAttribute('aria-expanded','false'); btn.focus(); }
+  btn.addEventListener('click', () => term.classList.contains('open') ? close() : open());
+  document.getElementById('term-close').addEventListener('click', close);
+  document.addEventListener('keydown', e => {
+    const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '`' && !typing){ e.preventDefault(); term.classList.contains('open') ? close() : open(); }
+    if (e.key === 'Escape' && term.classList.contains('open')) close();
+  });
+  const cmds = {
+    help: () => 'Cheats: whoami, experience, projects, skills, contact, resume, hire, easy, highscore, coffee, chess, ls, clear, exit',
+    whoami: () => 'Krishna K Attili. M.S. CS at NC State. 2 years building backend systems and AI agents at Blue Yonder.',
+    experience: () => 'Software Engineer at Blue Yonder: AI agent for 500+ people, 90% faster jobs, 2s to 0.5s latency.\nPromoted in 13 months. 1 of 18 award winners out of ~900 engineers.',
+    projects: () => 'mcp-security-gateway/  chess-puzzle-recommender/\nFight the gateway yourself in Level 2.',
+    skills: () => 'Python, Java, TypeScript, React, Kafka, MongoDB, Snowflake, FastAPI, Spring Boot, LangChain, MCP.',
+    contact: () => 'kkattili@ncsu.edu | attilikrishnakireeti@gmail.com | 669-366-4685\ngithub.com/KrishnaAttili10',
+    resume: () => 'Ask and you shall receive: kkattili@ncsu.edu',
+    hire: () => 'Permission denied. Try: sudo hire krishna',
+    'sudo hire krishna': () => { setTimeout(() => location.href = 'mailto:kkattili@ncsu.edu?subject=Let%27s%20talk%20internships', 900); return '[sudo] password for recruiter: ********\nAccess granted. Opening your email client...'; },
+    easy: () => easyMode(),
+    highscore: () => { const b = window.__flapBest(); return b ? 'Your best: ' + b + ' racks. Krishna\'s best: classified.' : 'No high score yet. Go fly the mug at the top of the page.'; },
+    coffee: () => 'Brewing... Error 418: I am a teapot. Just kidding, the mug is busy flying.',
+    chess: () => 'My recommender says your weakness is not hiring me yet.',
+    ls: () => 'about.txt  quest.log  side-quests/  award.png  secrets/ (permission denied)',
+    'cat secrets': () => 'Nice try. The gateway logged that.',
+    'rm -rf /': () => { panic(); return 'Oh no.'; },
+    'sudo rm -rf /': () => { panic(); return 'Oh no. With sudo, even.'; },
+    iddqd: () => 'Wrong game. Try the Konami code.',
+    exit: () => { setTimeout(close, 300); return 'Bye!'; }
+  };
+  document.getElementById('term-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const raw = input.value.trim(); input.value = '';
+    if (!raw) return;
+    print('> ' + raw);
+    const key = raw.toLowerCase();
+    if (key === 'clear'){ out.innerHTML = ''; return; }
+    if (cmds[key]) print(cmds[key]());
+    else if (key.startsWith('sudo')) print('Nice try. Only "sudo hire krishna" works here.');
+    else print('Unknown cheat: ' + raw + '. Type "help".');
+  });
+})();
+
+/* Konami code: easy mode */
+(function(){
+  const seq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let pos = 0;
+  document.addEventListener('keydown', e => {
+    const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    pos = (k === seq[pos]) ? pos + 1 : (k === seq[0] ? 1 : 0);
+    if (pos === seq.length){ pos = 0; easyMode(); toast(EASY ? 'Cheat code accepted: easy mode and a golden mug. That attention to detail? Hire-worthy.' : 'Easy mode off.'); }
+  });
+})();
+</script>
 </body>
 </html>
